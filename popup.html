@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Link2WhatsApp</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            width: 340px;
+            padding: 24px 18px 18px 18px;
+            background: #f7f9fa;
+            color: #222;
+        }
+
+        #setup, #mainUI {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+            padding: 22px 18px 18px 18px;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            margin-top: 0;
+            color: #25d366;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            margin-top: 8px;
+            padding: 8px 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 15px;
+            background: #fafbfc;
+            transition: border 0.2s;
+            box-sizing: border-box;
+        }
+        input:focus,
+        textarea:focus {
+            border: 1.5px solid #25d366;
+            outline: none;
+            background: #fff;
+        }
+
+        button {
+            margin-top: 14px;
+            padding: 10px 0;
+            width: 100%;
+            background: linear-gradient(90deg, #25d366 60%, #128c7e 100%);
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 1px 4px rgba(18,140,126,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #128c7e 60%, #25d366 100%);
+            box-shadow: 0 2px 8px rgba(18,140,126,0.13);
+        }
+
+        #urlText {
+            word-break: break-all;
+            background: #f1f3f4;
+            border-radius: 5px;
+            padding: 7px 8px;
+            margin: 8px 0 10px 0;
+            font-size: 14px;
+            color: #444;
+        }
+
+        .note-label {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 2px;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="setup">
+        <h3>Welcome</h3>
+        <p style="margin-bottom: 8px;">Enter your WhatsApp number:</p>
+        <input type="text" id="phoneInput" placeholder="+91XXXXXXXXXX" autocomplete="tel" />
+        <button id="saveNumberBtn">Save & Continue</button>
+    </div>
+
+    <div id="mainUI" style="display: none;">
+        <p style="margin-bottom: 4px;"><strong>Current Tab URL:</strong></p>
+        <p id="urlText"></p>
+        <label class="note-label" for="note">Add a note (optional):</label>
+        <textarea id="note" rows="3" placeholder="Optional note..."></textarea>
+        <button id="sendBtn">Send to WhatsApp</button>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

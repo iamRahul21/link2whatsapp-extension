@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 sendBtn.onclick = () => {
                     const note = noteInput.value;
                     const phone = result.whatsappNumber;
-
                     const data = {
                         phone,
                         url: currentURL,
@@ -35,7 +34,20 @@ document.addEventListener("DOMContentLoaded", () => {
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
                     })
-                        .then(() => alert("Sent to WhatsApp!"))
+                        .then(async (response) => {
+                            let msg;
+                            try {
+                                const resJson = await response.json();
+                                if (response.ok) {
+                                    msg = resJson.message || "Sent to WhatsApp!";
+                                } else {
+                                    msg = resJson.message ? `Failed: ${resJson.message}` : `Failed with status ${response.status}`;
+                                }
+                            } catch (e) {
+                                msg = response.ok ? "Sent to WhatsApp!" : `Failed with status ${response.status}`;
+                            }
+                            alert(msg);
+                        })
                         .catch(err => alert("Failed to send: " + err.message));
                 };
             });
